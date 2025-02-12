@@ -21,4 +21,5 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80 8080
 
 # Start both NGINX and FastAPI
-CMD service nginx start && uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4
+# CMD service nginx start && uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4
+CMD uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4 & nginx -g 'daemon off;'
