@@ -1,4 +1,4 @@
-name: CI Pipeline  # Name of the workflow
+name: CI Pipeline for Book Library
 
 on:  
   pull_request:  
