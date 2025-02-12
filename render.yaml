@@ -1,0 +1,8 @@
+services:
+  - name: fastapi-booklib
+    type: web
+    runtime: docker
+    envVars:
+      - key: PORT
+        value: 8000
+    dockerfilePath: ./Dockerfile
