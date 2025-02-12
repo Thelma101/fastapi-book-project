@@ -1,5 +1,5 @@
 # Use an official Python base image
-FROM python:3.11
+FROM python:3.10
 
 # Set working directory
 WORKDIR /app
@@ -22,4 +22,6 @@ EXPOSE 80 8080
 
 # Start both NGINX and FastAPI
 # CMD service nginx start && uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4
-CMD uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4 & nginx -g 'daemon off;'
+# CMD uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4 & nginx -g 'daemon off;'
+
+CMD service nginx start && uvicorn main:app --host 0.0.0.0 --port 8080 --workers 41
