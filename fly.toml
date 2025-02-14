@@ -1,4 +1,4 @@
-app = "fastapi-book-project"
+app = "fastapi-book-project-0mw-6g" 
 primary_region = "lhr"
 
 [http_service]
