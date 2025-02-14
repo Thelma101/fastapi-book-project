@@ -1,23 +1,23 @@
-# Base Python image
-FROM python:3.10
+# Use an official Python runtime as a parent image
+FROM python:3.10-slim
 
+# Set the working directory
 WORKDIR /app
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Install system dependencies
+RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
 
-# Copy app files
-COPY . .
+# Copy the application code
+COPY . /app
 
-# Install Nginx
-RUN apt-get update && apt-get install -y nginx
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy Nginx config
+# Copy the NGINX configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose ports
-EXPOSE 80 8000
+# Expose port 8080 for NGINX
+EXPOSE 8080
 
-# Start Nginx and FastAPI together
+# Start NGINX and FastAPI
 CMD service nginx start && uvicorn main:app --host 127.0.0.1 --port 8000
