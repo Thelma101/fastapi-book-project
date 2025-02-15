@@ -1,8 +1,11 @@
-app = "fastapi-book-project-0mw-6g" 
+app = "fastapi-book-project-0mw-6g"
 primary_region = "lhr"
 
+[build]
+  # dockerfile = "Dockerfile"  # Uncomment if your Dockerfile is not in the root directory
+
 [http_service]
-  internal_port = 8000
+  internal_port = 8080  # NGINX listens on 8080
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
@@ -15,7 +18,7 @@ primary_region = "lhr"
   cpus = 1
 
 [[services]]
-  internal_port = 8000
+  internal_port = 8080  # NGINX listens on 8080
   protocol = "tcp"
 
   [[services.ports]]

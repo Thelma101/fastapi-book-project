@@ -1,4 +1,3 @@
-# Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
 # Set the working directory
@@ -20,4 +19,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
 
 # Start NGINX and FastAPI
-CMD service nginx start && uvicorn main:app --host 0.0.0.0 --port 8000
+CMD nginx -g 'daemon off;' & uvicorn main:app --host 0.0.0.0 --port 8000
